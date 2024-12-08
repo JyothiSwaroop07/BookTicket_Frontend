@@ -6,7 +6,8 @@ const MovieCard = ({ movie }) => {
       <img
         src={movie.poster_url}
         alt={movie.title}
-        className="w-full h-58 object-cover rounded-md"
+        className="w-full h-[300px] object-cover rounded-md"
+        
       />
       <h2 className="mt-2 text-textPrimary text-lg font-bold">{movie.title}</h2>
       <h3 className="mt-2 text-textPrimary text-lg font-bold">{movie.genre}</h3>
