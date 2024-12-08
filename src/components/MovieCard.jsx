@@ -2,11 +2,11 @@ import React from "react";
 
 const MovieCard = ({ movie }) => {
   return (
-    <div className="bg-secondary rounded-md shadow-md p-4 text-center">
+    <div className="bg-secondary rounded-md p-2 text-center">
       <img
         src={movie.poster_url}
         alt={movie.title}
-        className="w-full h-48 object-cover rounded-md"
+        className="w-full h-58 object-cover rounded-md"
       />
       <h2 className="mt-2 text-textPrimary text-lg font-bold">{movie.title}</h2>
       <h3 className="mt-2 text-textPrimary text-lg font-bold">{movie.genre}</h3>
