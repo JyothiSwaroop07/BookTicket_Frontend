@@ -1,19 +1,34 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const MovieCard = ({ movie }) => {
+  const navigate = useNavigate();
+
+  const goToShowsPage = () => {
+    navigate(`/movies/${movie.id}/shows?city=Bengaluru`);
+  };
+
   return (
-    <div className="bg-secondary rounded-md shadow-md p-2 text-center">
+    <div className="bg-secondary rounded-md p-2 text-center">
       <img
         src={movie.poster_url}
         alt={movie.title}
         className="w-full h-[300px] object-cover rounded-md"
         
       />
-      <h2 className="mt-2 text-textPrimary text-lg font-bold">{movie.title}</h2>
-      <h3 className="mt-2 text-textPrimary text-lg font-bold">{movie.genre}</h3>
-      <button className="bg-primary text-secondary px-4 py-2 mt-4 rounded-md hover:bg-buttonHover">
-        Book Now
-      </button>
+      <div className="text-left pl-2">
+        <h2 className="mt-2 text-textPrimary text-lg font-bold">{movie.title}</h2>
+        <h3 className="text-textPrimary text-sm font-normal text-gray-700">{movie.genre}</h3>
+        <button className="bg-gray-800 px-2 py-1 text-white text-secondary text-md mt-2 rounded-md hover:bg-buttonHover"
+          onClick={(e) => {
+            e.stopPropagation(); // Prevent parent div click
+            goToShowsPage();
+          }}
+        >
+          Book Now
+        </button>
+      </div>
     </div>
   );
 };

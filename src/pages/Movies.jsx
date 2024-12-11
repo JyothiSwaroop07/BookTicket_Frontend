@@ -1,23 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Navbar from "../components/Navbar";
 import MovieCard from "../components/MovieCard";
-import { fetchMoviesByCity } from "../services/api";
 
-const Movies = () => {
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const response = await fetchMoviesByCity("Bengaluru"); // Default city
-        setMovies(response.data);
-      } catch (error) {
-        console.error("Error fetching movies:", error);
-      }
-    };
-
-    fetchMovies();
-  }, []);
+const Movies = ({movies}) => {
 
   return (
     <div>

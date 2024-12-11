@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import MovieCard from "../components/MovieCard";
-import { fetchLatestMoviesByCity } from "../services/api";
+
 
 import Slider from 'react-slick'
-import './Home.css'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -43,8 +42,7 @@ const NextArrow = ({ className, style, onClick }) => (
     />
   );
 
-const Home = () => {
-  const [movies, setMovies] = useState([]);
+const Home = ({movies}) => {
   const navigate = useNavigate();
 
   const settings = {
@@ -76,18 +74,7 @@ const Home = () => {
     ],
   };
 
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const response = await fetchLatestMoviesByCity("Bengaluru"); // Default city
-        setMovies(response.data);
-      } catch (error) {
-        console.error("Error fetching movies:", error);
-      }
-    };
-
-    fetchMovies();
-  }, []);
+  
 
   return (
     <div>
@@ -99,7 +86,7 @@ const Home = () => {
       </div>
        
             <div className="p-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {movies.map((movie) => (
+            {movies.sort((a, b) => new Date(b.release_date) - new Date(a.release_date)).slice(0,7).map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
             ))}
             </div>
