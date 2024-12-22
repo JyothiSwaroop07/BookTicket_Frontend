@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Movies from "./pages/Movies";
 import Shows from "./pages/Shows";
+import SeatSelection from "./pages/SeatSelection";
+import Payment from "./pages/Payment";
 
 const {fetchMoviesByCity} = require('./services/api')
 
@@ -32,6 +34,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/movies" element={<Movies movies={movies}/>} />
         <Route path="/movies/:movieId/shows" element={<Shows />} />
+        <Route path="/movies/selectseats/:showId" element={<SeatSelection />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </Router>
   );
