@@ -30,6 +30,7 @@ function App() {
   return (
     <Router>
       <Routes>
+
         <Route path="/" element={<Home movies={movies}/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/movies" element={<Movies movies={movies}/>} />

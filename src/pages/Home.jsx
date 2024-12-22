@@ -79,6 +79,7 @@ const Home = ({movies}) => {
   return (
     <div>
       <Navbar />
+      <h1 className="text-center font-bold">***Only a practise Project dont do any payments***</h1>
       <div className="mt-8">
       <div className="flex flex-row justify-between">
       <h2 className="text-left font-bold text-xl px-8">Recommended Movies</h2>
