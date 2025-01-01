@@ -63,7 +63,7 @@ const SeatSelection = () => {
         };
 
         console.log("proceed to payment clicked", paymentDetails);
-        navigate("/payment", { state: paymentDetails });
+        navigate("/order", { state: paymentDetails });
     };
 
     const organizeSeats = (seats) => {

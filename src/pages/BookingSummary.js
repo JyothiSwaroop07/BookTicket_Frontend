@@ -1,18 +1,32 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const Payment = () => {
+const BookingSummary = () => {
     const location = useLocation();
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const paymentDetails = location.state || {};
-
-    console.log(paymentDetails);
 
     const totalPrice = paymentDetails.seatNumbers.reduce((total, seat) => {
         return total + parseInt(seat.price); 
     }, 0);
 
     const convinienceFee = totalPrice * 0.13;
+
+    const TotalBill = (totalPrice+convinienceFee).toFixed(2);
+
+    const proceedToPayment = () => {
+        if (!paymentDetails || Object.keys(paymentDetails).length === 0) {
+            console.error("paymentDetails is undefined or empty");
+            return;
+        }
+
+        const orderDetails = {
+            ...paymentDetails,
+            amount: TotalBill
+        }
+
+        navigate("/payment", {state: orderDetails})
+    }
 
     return (
         <div className="p-4 ">
@@ -88,7 +102,8 @@ const Payment = () => {
 
                 <div className="flex flex-col items-center mt-12 self-end">
                     <h4 className="text-gray-400 text-xs w-[200px] mb-2">By proceeding, I express my consent to complete this transaction</h4>
-                    <button className="bg-red-600 text-white p-2 w-[220px] text-md rounded-md">
+                    <button className="bg-red-600 text-white p-2 w-[220px] text-md rounded-md"
+                    onClick={proceedToPayment}>
                             Proceed to Payment
                     </button>
                 </div>
@@ -99,4 +114,4 @@ const Payment = () => {
     )
 }
 
-export default Payment;
+export default BookingSummary;

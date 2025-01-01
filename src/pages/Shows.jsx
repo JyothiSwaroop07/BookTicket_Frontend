@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 const { fetchShowsByMovie } = require('../services/api');
 
@@ -60,10 +59,10 @@ const Shows = () => {
 
   return (
     <div className="">
-      <Navbar />
+      
       <div className="py-4 px-6">
         <div className="title-container py-6 px-6">
-          <h2 className="title text-5xl font-normal">{movieName}</h2>
+          <h2 className="title text-3xl font-normal">{movieName}</h2>
         </div>
       </div>
       <hr />
